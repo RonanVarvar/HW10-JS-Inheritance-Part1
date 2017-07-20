@@ -22,8 +22,7 @@ Gladiator.prototype.updateSkills = function () {
 Gladiator.prototype.fight = function (contestant) {
     this.contestant = contestant;
 
-    if (contestant.hitpoints > 0 && gameOver === false && this.hitpoints >
-        0) {
+    if (contestant.hitpoints > 0 && gameOver === false && this.hitpoints > 0) {
         this.getAttack();
         contestant.hitpoints -= this.attack;
         this.fightLog();
