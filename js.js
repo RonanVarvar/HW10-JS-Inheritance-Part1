@@ -21,9 +21,9 @@ Gladiator.prototype.updateSkills = function () {
 
 Gladiator.prototype.fight = function (contestant) {
     this.contestant = contestant;
+    this.losshitpoints = 0;
 
-    if (contestant.hitpoints > 0 && gameOver === false && this.hitpoints >
-        0) {
+    if (contestant.hitpoints > this.losshitpoints && gameOver === false && this.hitpoints > this.losshitpoints) {
         this.getAttack();
         contestant.hitpoints -= this.attack;
         this.fightLog();
@@ -33,7 +33,7 @@ Gladiator.prototype.fight = function (contestant) {
 };
 
 Gladiator.prototype.fightLog = function () {
-    if (this.contestant.hitpoints > 0) {
+    if (this.contestant.hitpoints > this.losshitpoints) {
         console.log(this.name + ' attacked ' + this.contestant.name +
             ' for ' + this.attack + ' damage. ' + this.contestant.name +
             ' hitpoints are ' + this.contestant.hitpoints);
@@ -45,7 +45,7 @@ Gladiator.prototype.fightLog = function () {
 };
 
 Gladiator.prototype.winResult = function () {
-    if (this.contestant.hitpoints <= 0) {
+    if (this.contestant.hitpoints <= this.losshitpoints) {
         gameOver = true;
         console.log(this.name + ' won!');
     }
